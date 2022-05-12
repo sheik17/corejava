@@ -1,0 +1,106 @@
+package com.chainsys.jdbc;
+import java.sql.*;
+import java.util.*;
+ 
+ 
+public class connect {
+  public static void main(String[] args) {
+ 
+  int id ;
+  String title;
+  String author;
+  
+ 
+       System.out.println("Enter ID : ");
+       Scanner a = new Scanner(System.in);
+       id = a.nextInt();
+                  
+        
+       System.out.println("Enter Gender : ");
+       Scanner b = new Scanner(System.in);
+       title = b.nextLine();
+                 
+        
+        
+ 
+       System.out.println("Enter Name : ");
+       Scanner c = new Scanner(System.in);
+       author = c.nextLine();
+ 
+ 
+      
+     
+ 
+ 
+ 
+ 
+a.close(); 
+b.close(); 
+       c.close();            
+        
+       
+           System.out.println("-------- MySQL JDBC Connection Testing ------------");
+  
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+        System.out.println("Where is your MySQL JDBC Driver?");
+        e.printStackTrace();
+        return;
+    }
+  
+    System.out.println("MySQL JDBC Driver Registered!");
+    Connection con = null;
+  
+    try {
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tarun","root", "root");
+  
+    } catch (SQLException e) {
+        System.out.println("Connection Failed! Check output console");
+        e.printStackTrace();
+        return;
+    }
+ 
+    if (con != null) {
+         
+ System.out.println("Connection made.....");
+     
+try{
+ 
+   System.out.println("creating statements...");
+   Statement stmt = con.createStatement();
+ 
+   String sql = "INSERT INTO OHRI " + "VALUES (id ,title , author)"; 
+   stmt.executeUpdate(sql); 
+   System.out.println("Inserted records into the table...");
+ 
+ 
+stmt.close();
+con.close();
+}catch(SQLException se){
+se.printStackTrace();
+}catch(Exception e){
+e.printStackTrace();
+}} else {
+        System.out.println("Failed to make connection!");
+    }
+ 
+        
+  }
+}
+ rs.close();
+ stmt.close(); 
+conn.close();
+ }catch(SQLException se){ 
+se.printStackTrace(); }catch(Exception e){ 
+e.printStackTrace(); }finally{ 
+try{ 
+if(stmt!=null) 
+stmt.close();
+ }catch(SQLException se2){ }
+ try{ if(conn!=null) conn.close();
+ }catch(SQLException se){ se.printStackTrace();
+ } }
+System.out.println("Goodbye!");
+ }
+}

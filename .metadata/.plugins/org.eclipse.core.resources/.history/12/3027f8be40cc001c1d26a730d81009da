@@ -1,0 +1,60 @@
+package com.chainsys.jdbc;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.*;
+import java.util.Scanner;
+
+public class InsertRecordsN {
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException
+    {
+        // TODO Auto-generated method stub
+        Class.forName("oracle.jdbc.driver.OracleDriver");  
+        Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","123");  
+          
+        PreparedStatement ps=con.prepareStatement("insert into EMPLOYEES values(?,?,?)");         
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+          
+        do{  
+            System.out.println("Enter ID : ");
+            Scanner a = new Scanner(System.in);
+            int EMPLOYEE_ID = a.nextInt();                                    
+            System.out.println("Enter EMAIL : ");
+            Scanner b = new Scanner(System.in);
+            String EMAIL = b.nextLine();
+            System.out.println("Enter Name : ");
+            Scanner c = new Scanner(System.in);
+            String FIRST_NAME = c.nextLine();                                            
+     a.close(); 
+     b.close(); 
+     c.close(); 
+     try{
+    	 
+    	   System.out.println("creating statements...");
+    	   Statement stmt = con.createStatement();
+    	 
+    	   String sql = "INSERT INTO OHRI " + "VALUES (id ,title , author)"; 
+    	   stmt.executeUpdate(sql); 
+    	   System.out.println("Inserted records into the table...");
+    	 
+    	 
+    	stmt.close();
+    	con.close();
+    	}catch(SQLException se){
+    	se.printStackTrace();
+    	}
+        int i=ps.executeUpdate();  
+        System.out.println(i+" records affected");  
+          
+        System.out.println("Do you want to continue: y/n");  
+        String s=br.readLine();  
+        if(s.startsWith("n")){  
+        break;  
+        }  
+        }while(true);  
+          
+        con.close();  
+        }  
+    }

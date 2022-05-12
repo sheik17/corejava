@@ -1,0 +1,20 @@
+package com.chainsys.reflection;
+
+abstract class Emp
+{
+  public int Eno;
+   public String Name;
+   private int no;
+   public Emp()
+   {
+      System.out.println("Emp Created");
+   }
+   public void startWork()
+   {
+      System.out.println("WorkStarted");
+	}
+	public void pauseWork(int duration)
+	{
+		System.out.println("pauseWork for "+duration );
+	}
+}
