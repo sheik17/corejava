@@ -15,7 +15,7 @@ public class Actor
 		Name=value;
 	}
 	
-  public void printName()
+  private void printName()
   {
   	System.out.println("\t printName "+Name);
   }

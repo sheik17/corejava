@@ -2,7 +2,7 @@ package com.chainsys.reflection;
 
 public class Actor
 {
-	public  String Name;
+	private  String Name;
 	public String city;
 	private  long pincode;
 	
@@ -15,7 +15,7 @@ public class Actor
 		Name=value;
 	}
 	
-  public void printName()
+  private void printName()
   {
   	System.out.println("\t printName "+Name);
   }

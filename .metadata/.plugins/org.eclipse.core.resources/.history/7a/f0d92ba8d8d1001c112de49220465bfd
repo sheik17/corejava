@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class ListClassMembers {
 	public static void main(String args[]) 
 	{
-		lateBinding();
+		git add .
+		git commit -m "update git ignore"
+		git push -u -f origin main();
 	}
 	public static void printClassInfo(Object ob)
 	  {

@@ -4,7 +4,7 @@ public class Actor
 {
 	public  String Name;
 	public String city;
-	private  long pincode;
+	public  long pincode;
 	
 	public Actor()
 	{
@@ -28,7 +28,7 @@ public class Actor
   {
 	 System.out.println(" printCity "+city);
   }
- private void printPincode()
+ public void printPincode()
   {
 	 System.out.println(" printPincode "+pincode);
   }
