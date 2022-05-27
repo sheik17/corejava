@@ -5,7 +5,7 @@ public class Emp
   protected int Eno;
    public String Name;
    private int no;
-   public Emp()
+   private void EmpA()
    {
       System.out.println("Emp Created");
    }
